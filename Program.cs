@@ -1,4 +1,6 @@
-﻿class Program
+﻿using Microsoft.EntityFrameworkCore.Storage;
+
+class Program
 {
   static void Main()
   {
@@ -29,10 +31,24 @@
       else
       {
         try
-        {
-          /*──────────────────────────────────╮
-          │ Handle your custome requests here │
-          ╰──────────────────────────────────*/
+        { 
+           if (request.Path == "sign up")
+          {
+           var (username,password) =request.GetBody<(string,string)>();
+          var userExists = Database.Users.any(userExists =>user.username ==username && user.password);
+
+          
+          
+
+
+
+
+
+
+
+
+
+          }
           response.SetStatusCode(405);
         }
         catch (Exception exception)
