@@ -1,10 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿
+using System.Reflection.Metadata;
 
 class Program
 {
   static void Main()
   {
+    User[] users = [];
+
     int port = 5000;
+
 
     var server = new Server(port);
 
@@ -31,14 +35,32 @@ class Program
       else
       {
         try
-        { 
-           if (request.Path == "sign up")
+        {
+          if (request.Path == "signup")
           {
-           var (username,password) =request.GetBody<(string,string)>();
-          var userExists = Database.Users.any(userExists =>user.username ==username && user.password);
 
-          
-          
+            (string username, string password) = request.GetBody<(string, string)>();
+            string userId = Guid.NewGuid().ToString();
+            users = [.. users, new User(username, password, userId)];
+            response.Send(userId);
+          }
+          if (request.Path == "login")
+          {
+            (string username, string password) = request.GetBody<(string, string)>();
+            string? userId = null;
+            for (int i = 0; i < users.Length; i++)
+            {
+              if (username == users[i].username && password == users[i].password)
+              {
+                userId = users[i].id;
+              }
+            }
+            response.Send(userId);
+
+
+
+
+
 
 
 
@@ -61,3 +83,19 @@ class Program
     }
   }
 }
+
+class User
+{
+  public string username;
+  public string password;
+  public string id;
+
+  public User(string username, string password, string id)
+  {
+    this.username = username;
+    this.password = password;
+    this.id = id;
+
+  }
+}
+
