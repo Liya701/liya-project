@@ -7,59 +7,119 @@
 </head>
 
 <body>
+  <a href="/website/pages/style.css"></a>
   <a href="/website/pages/signup.html"><button id="signupButton">signup</button></a>
   <a href="/website/pages/login.html"><button id="loginButton">login</button></a>
+  
   <h1 id="first">Art Gallary</h1>
   <h2 id="second">welcome to the website!</h2>
-  <div id="img contanior">
+  <div id="imgcontanior">
+    <div class="img-border">
   <img src="https://pic1.calcalist.co.il/PicServer2/20122005/250168/The_Scream_L.jpg">
-  <div>scream by Edvard Monk</div>
-    <img src="https://drbatzir.wordpress.com/wp-content/uploads/2013/03/renoir30-c1a1bdc9_ktino.jpg">
-    <div>The boating party by Pierre-Auguste Renoir</div>
+  <div> scream by Edvard Monk</div>
+</div>
+<div class="img-border">
+  <img src="https://www.1st-art-gallery.com/media/catalog/product/cache/9bad95616889b8b60a4bb85fbf2f33f9/b/a/base_11550084.webp">
+    <div> <a href="/website/pages/edvard.html" ></a> the boating party by Pierre-Auguste Renoir</div>
   </div>
+  <div class="img-border">
+<img src="https://uploads2.wikiart.org/00475/images/vincent-van-gogh/the-starry-night-1889.jpg!PinterestSmall.jpg">
+<div> starry night by Vincent Van Gogh</div>
+  </div>
+  <div class="img-border">
+<img src="https://eureka.b-cdn.net/images/z/8395876632.jpg">
+<div>The Persistence of Memory by salvador dali</div>
+  </div>
+</div>
+<br>
+<br>
+<div id="contanior2">
+  <div class="img-border">
+    <img src="https://cdn.babamail.co.il/Images/2023/12/13/bd761b9d-a235-45e0-b3e9-cdaee566727b.jpg">
+<div>the girl with a pearl earring by Jan Vermeer</div>
+  </div>
+  <div class="img-border">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/7/74/PicassoGuernica.jpg/350px-PicassoGuernica.jpg">
+    <div>Guernica by Pablo Picasso</div>
+  </div>
+    <div class="img-border">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Edouard_Manet_004.jpg/300px-Edouard_Manet_004.jpg">
+<div>The bar at Folly Berger by Folly Berger</div>
+  </div>
+</div>
   <style>
-    @font-face {
-      font-family: "myFont";
-      src: url("/website/fonts/AguDisplay-Regular-VariableFont_MORF.ttf");
-    }
 
-    #buttonsDiv {
-      display: flex;
-      justify-content: flex-end;
+@font-face {
+    font-family: "myFont";
+    src: url("/website/fonts/AguDisplay-Regular-VariableFont_MORF.ttf");
+  }
 
-    }
-
-    #first {
-      display: flex;
-      font-family: "myFont";
-      justify-content: center;
-    }
-
-
-
-    #second {
-      display: flex;
-      font-family: "myFont";
-
-
-    }
-
-    #imageContainer {
+  #buttonsDiv {
     display: flex;
-    justify-content: center; 
-    gap: 20px;
+    justify-content: flex-end;
+
   }
 
-  #imageContainer div {
-    text-align: center; 
+  #first {
+    display: flex;
+    font-family: "myFont";
+    justify-content: center;
   }
 
-  #imageContainer img {
-    max-width: 200px; 
-    height: auto;
+
+
+  #second {
+    display: flex;
+    font-family: "myFont";
+
+
   }
+  #img-border{
+  text-align: center;
+}
+
+  #imgcontanior {
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+  
+}
+
+#imgcontanior div {
+  text-align: center; 
+  font-family: "myFont";
+ 
+}
+
+#imgcontanior img {
+  max-width: 300px; 
+  height: 300px;
+}
+#contanior2 {
+  display: flex;
+  justify-content: center; 
+  gap: 20px;
+  
+}
+
+#contanior2 div {
+  text-align: center; 
+  font-family: "myFont";
+ 
+}
+
+#contanior2 img {
+  max-width: 300px; 
+  height: 300px;
+}
+
+
+
+
   </style>
+  
+ 
 
 </body>
 
-</html
+</html>
