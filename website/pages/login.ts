@@ -1,13 +1,16 @@
 import { send } from "../utilities";
-let passwordInput = document.getElementById("passwordInput") as HTMLInputElement;
-let usernameInput = document.getElementById("usernameInput") as HTMLInputElement;
-let loginButton = document.getElementById("loginButton") as HTMLButtonElement;
-loginButton.onclick = async function () {
-    let [userfound, userId] = await send ("login", [usernameInput.value, passwordInput.value]) as [boolean, string]
-    console.log("user found:" + userfound)
-    if (userfound){
-        localStorage.setItem("userId" ,userId);
-        location.href ="index.html";
-    }
-}
 
+let UsernameInput = document.querySelector("#UsernameInput") as HTMLInputElement;
+let PasswordInput = document.querySelector("#PasswordInput") as HTMLInputElement;
+let LoginButton = document.querySelector("#LoginButton") as HTMLButtonElement;
+
+    LoginButton.onclick = async function () {
+        let [userFound, userId] = await send("login", [UsernameInput.value, PasswordInput.value]) as [boolean, string];
+        console.log("User found:" + userFound);
+
+        if (userFound) {
+            localStorage.setItem("userId", userId);
+            location.href = "index.html";
+        } 
+        }
+       
