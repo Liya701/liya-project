@@ -1,4 +1,4 @@
-import { send } from "../utilities";
+import { send } from "../utilities"
 
 let UsernameInput = document.querySelector("#UsernameInput") as HTMLInputElement;
 let PasswordInput = document.querySelector("#PasswordInput") as HTMLInputElement;

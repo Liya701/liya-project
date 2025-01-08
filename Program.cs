@@ -8,7 +8,7 @@ class Program
     User[] users = [];
 
     int port = 5000;
-
+   
 
     var server = new Server(port);
 
@@ -92,12 +92,14 @@ class User
   public string username;
   public string password;
   public string id;
+  public bool[] favorites;
 
   public User(string username, string password, string id)
   {
     this.username = username;
     this.password = password;
     this.id = id;
+    favorites = [false,false, false,false, false,false, false, false, false, false];
 
   }
 }
