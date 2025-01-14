@@ -55,28 +55,49 @@ class Program
                 userId = users[i].id;
               }
             }
-        
-           
-           
-  
+      
             response.Send(userId);
+          
+          if (request.Path =="addtofavorite"){
+            (int i, string userId) = request.GetBody<(int, string)>();
+            User user = default!;
+            for (int a =0; a < users.Length; a++){
+              if (userId== users[a].id){
+                user = users[a];
+              }
+            }
+            user.favorites[i] = true;
+          }
 
-
-
-
-
-
-
-
-
-
-
-
+          if (request.Path == "removefromfavorite"){
+         (int i, string userId) = request.GetBody<(int, string)>();
+            User user = default!;
+            for (int a =0; a < users.Length; a++){
+              if (userId == users[a].id){
+                user = users[a];
+              }
+            }
+            user.favorites[i] = false;
+          }
+          
+        if (request.Path =="getfavorite"){
+          string userId = request.GetBody<string>();
+          User user = default!;
+            for (int a =0; a < users.Length; a++){
+              if (userId == users[a].id){
+                user = users[a];
+              }
+            }
+            response.Send(user.favorites);
+        }
+         
 
 
           }
+          
           response.SetStatusCode(405);
-        }
+          
+          }
         catch (Exception exception)
         {
           Log.WriteException(exception);
