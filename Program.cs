@@ -58,45 +58,50 @@ class Program
       
             response.Send(userId);
           
-          if (request.Path =="addtofavorite"){
-            (int i, string userId) = request.GetBody<(int, string)>();
-            User user = default!;
-            for (int a =0; a < users.Length; a++){
-              if (userId== users[a].id){
-                user = users[a];
-              }
-            }
-            user.favorites[i] = true;
-          }
-
-          if (request.Path == "removefromfavorite"){
-         (int i, string userId) = request.GetBody<(int, string)>();
-            User user = default!;
-            for (int a =0; a < users.Length; a++){
-              if (userId == users[a].id){
-                user = users[a];
-              }
-            }
-            user.favorites[i] = false;
-          }
-          
-        if (request.Path =="getfavorite"){
-          string userId = request.GetBody<string>();
-          User user = default!;
-            for (int a =0; a < users.Length; a++){
-              if (userId == users[a].id){
-                user = users[a];
-              }
-            }
-            response.Send(user.favorites);
+        
+if (request.Path == "addtofavorite") {
+    (int i, string userId) = request.GetBody<(int, string)>();
+    User user = default!;
+    for (int j = 0; j < users.Length; j++) {
+        if (userId == users[j].id) {
+            user = users[j];
         }
+    }
+    user.favorites[i] = true;
+}
+
+if (request.Path == "removefromfavorite") {
+    (int i, string userId) = request.GetBody<(int, string)>();
+    User user = default!;
+    for (int j = 0; j < users.Length; j++) {
+        if (userId == users[j].id) {
+            user = users[j];
+        }
+    }
+    user.favorites[i] = false;
+}
+
+
+if (request.Path == "getfavorite") {
+    string userId = request.GetBody<string>();
+    User user = default!;
+    for (int j = 0; j < users.Length; j++) {
+        if (userId == users[j].id) {
+            user = users[j];
+        }
+    }
+    response.Send(user.favorites);
+  
+
+}
+
          
 
 
           }
-          
+          else{
           response.SetStatusCode(405);
-          
+          }
           }
         catch (Exception exception)
         {

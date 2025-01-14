@@ -15,3 +15,10 @@ for(let i =0; i< favorite.length;i++) {
         arts[i].style.display = "block";
     }
 }
+fetch('/addtofavorite', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ userId: 'user123' })
+});
