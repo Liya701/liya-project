@@ -58,9 +58,8 @@ class Program
       
             response.Send(userId);
           
-        
-if (request.Path == "addtofavorite") {
-    (int i, string id) = request.GetBody<(int, string)>();
+      if (request.Path == "addtofavorite") {
+      (int i, string userId) = request.GetBody<(int, string)>();
     User user = default!;
     for (int j = 0; j < users.Length; j++) {
         if (userId == users[j].id) {
@@ -71,7 +70,7 @@ if (request.Path == "addtofavorite") {
 }
 
 if (request.Path == "removefromfavorite") {
-    (int i, string id) = request.GetBody<(int, string)>();
+    (int i, string userId) = request.GetBody<(int, string)>();
     User user = default!;
     for (int j = 0; j < users.Length; j++) {
         if (userId == users[j].id) {
@@ -83,7 +82,7 @@ if (request.Path == "removefromfavorite") {
 
 
 if (request.Path == "getfavorite") {
-    string id = request.GetBody<string>();
+    string userId = request.GetBody<string>();
     User user = default!;
     for (int j = 0; j < users.Length; j++) {
         if (userId == users[j].id) {

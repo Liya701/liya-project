@@ -13,6 +13,7 @@ console.log(favorite)
 for(let i =0; i< favorite.length;i++) {
     if (favorite[i]){
         arts[i].style.display = "block";
+        
     }
 }
 
