@@ -1,7 +1,7 @@
 import { send } from "../utilities"
 
 let arts = document.querySelectorAll(".art") as NodeListOf<HTMLDivElement>;
-let userId = localStorage.getItem("userId");
+let userId = localStorage.getItem("userId") as String | null;
 
 let favorite = await send (
 "getfavorite"

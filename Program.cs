@@ -8,7 +8,7 @@ class Program
     User[] users = [];
 
     int port = 5000;
-   
+
 
     var server = new Server(port);
 
@@ -44,7 +44,7 @@ class Program
             users = [.. users, new User(username, password, userId)];
             response.Send(userId);
           }
-          if (request.Path == "login")
+          else if (request.Path == "login")
           {
             (string username, string password) = request.GetBody<(string, string)>();
             string? userId = null;
@@ -55,53 +55,58 @@ class Program
                 userId = users[i].id;
               }
             }
-          
+
             response.Send(userId);
           }
-      if (request.Path == "addtofavorite") {
-      (int i, string userId) = request.GetBody<(int, string)>();
-    User user = default!;
-    for (int j = 0; j < users.Length; j++) {
-        if (userId == users[j].id) {
-            user = users[j];
-        }
-    }
-    user.favorites[i] = true;
-}
-
-if (request.Path == "removefromfavorite") {
-    (int i, string userId) = request.GetBody<(int, string)>();
-    User user = default!;
-    for (int j = 0; j < users.Length; j++) {
-        if (userId == users[j].id) {
-            user = users[j];
-        }
-    }
-    user.favorites[i] = false;
-}
-
-
-if (request.Path == "getfavorite") {
-    string userId = request.GetBody<string>();
-    User user = default!;
-    for (int j = 0; j < users.Length; j++) {
-        if (userId == users[j].id) {
-            user = users[j];
-        }
-    }
-    response.Send(user.favorites);
-  
-
-}
-
-         
-
-
-          
-          else{
-          response.SetStatusCode(405);
+          else if (request.Path == "addtofavorite")
+          {
+            (int i, string userId) = request.GetBody<(int, string)>();
+            User user = default!;
+            for (int j = 0; j < users.Length; j++)
+            {
+              if (userId == users[j].id)
+              {
+                user = users[j];
+              }
+            }
+            user.favorites[i] = true;
           }
+
+          else if (request.Path == "removefromfavorite")
+          {
+            (int i, string userId) = request.GetBody<(int, string)>();
+            User user = default!;
+            for (int j = 0; j < users.Length; j++)
+            {
+              if (userId == users[j].id)
+              {
+                user = users[j];
+              }
+            }
+            user.favorites[i] = false;
           }
+
+
+          else if (request.Path == "getfavorite")
+          {
+            string userId = request.GetBody<string>();
+            User user = default!;
+            for (int j = 0; j < users.Length; j++)
+            {
+              if (userId == users[j].id)
+              {
+                user = users[j];
+              }
+            }
+            response.Send(user.favorites);
+
+
+          }
+          else
+          {
+            response.SetStatusCode(405);
+          }
+        }
         catch (Exception exception)
         {
           Log.WriteException(exception);
@@ -113,21 +118,21 @@ if (request.Path == "getfavorite") {
   }
 
 
-class User
-{
-  public string username;
-  public string password;
-  public string id;
-  public bool[] favorites;
-
-  public User(string username, string password, string id)
+  class User
   {
-    this.username = username;
-    this.password = password;
-    this.id = id;
-    favorites = [false,false, false,false, false,false, false, false, false, false];
+    public string username;
+    public string password;
+    public string id;
+    public bool[] favorites;
 
+    public User(string username, string password, string id)
+    {
+      this.username = username;
+      this.password = password;
+      this.id = id;
+      favorites = [false, false, false, false, false, false, false, false, false, false];
+
+    }
   }
-}
 }
 
