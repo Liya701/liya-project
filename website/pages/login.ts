@@ -8,7 +8,7 @@ let LoginButton = document.querySelector("#LoginButton") as HTMLButtonElement;
         let [userFound, userId] = await send("login", [UsernameInput.value, PasswordInput.value]) as [boolean, string];
         console.log("User found:" + userFound);
 
-        if (userFound) {
+        if (userId!=null) {
             localStorage.setItem("userId", userId);
             location.href = "index.html";
         } 

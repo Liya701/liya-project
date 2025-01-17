@@ -55,9 +55,9 @@ class Program
                 userId = users[i].id;
               }
             }
-      
-            response.Send(userId);
           
+            response.Send(userId);
+          }
       if (request.Path == "addtofavorite") {
       (int i, string userId) = request.GetBody<(int, string)>();
     User user = default!;
@@ -97,7 +97,7 @@ if (request.Path == "getfavorite") {
          
 
 
-          }
+          
           else{
           response.SetStatusCode(405);
           }
@@ -111,7 +111,7 @@ if (request.Path == "getfavorite") {
       response.Close();
     }
   }
-}
+
 
 class User
 {
@@ -128,5 +128,6 @@ class User
     favorites = [false,false, false,false, false,false, false, false, false, false];
 
   }
+}
 }
 
